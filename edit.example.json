@@ -1,0 +1,26 @@
+{
+  "output": "reel.mp4",
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "segments": [
+    { "src": "input/raw/clip01.mp4", "in": 0.35, "out": 3.10, "zoom": 1.0, "zoomTo": 1.12 },
+    { "src": "input/raw/clip01.mp4", "in": 3.55, "out": 6.20, "zoom": 1.2, "focusX": 0.45 },
+    { "src": "input/raw/broll_tela.mp4", "in": 2.0, "out": 3.4, "fit": "blur", "mute": true },
+    { "src": "input/raw/clip02.mp4", "in": 0.80, "out": 4.90, "speed": 1.1, "fadeOut": 0.3 }
+  ],
+  "captions": {
+    "maxWords": 3,
+    "style": {
+      "font": "Montserrat",
+      "size": 82,
+      "color": "#FFFFFF",
+      "highlight": "#FFE600",
+      "outline": "#000000",
+      "outlineWidth": 6,
+      "uppercase": true,
+      "marginV": 640,
+      "pop": true
+    }
+  },
+  "music": { "src": "input/music/trilha.mp3", "volume": 0.12, "duck": true },
+  "loudnessLUFS": -14
+}

@@ -1,0 +1,10 @@
+# media (não versionar vídeos)
+input/**/*
+!input/**/
+!input/**/.gitkeep
+output/*
+!output/.gitkeep
+work/*
+!work/.gitkeep
+node_modules/
+.DS_Store

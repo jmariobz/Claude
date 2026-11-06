@@ -1,0 +1,15 @@
+{
+  "name": "claude-video-editor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Transforma o Claude Code em editor de vídeo: estuda reels de referência e edita clipes brutos em um reel vertical 9:16 com ffmpeg.",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "analyze": "node scripts/analyze-reference.mjs",
+    "probe": "node scripts/probe-raw.mjs",
+    "preview": "node scripts/render.mjs --preview",
+    "render": "node scripts/render.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

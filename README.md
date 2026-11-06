@@ -1,0 +1,49 @@
+# Claude Code como editor de vídeo
+
+Implementação do fluxo do post *"How to Turn Claude Code Into a Video Editor (Full Course)"*
+([@PrajwalTomar_](https://x.com/PrajwalTomar_/status/2114696125295051005)). Você dá ao Claude reels
+prontos do seu editor para ele estudar e aponta para os clipes brutos. Ele aprende o estilo
+e monta um reel vertical, gerando um preview para revisão antes do render final.
+
+## Instalação
+
+```bash
+# macOS
+brew install node ffmpeg
+# Ubuntu/Debian
+sudo apt install nodejs ffmpeg
+# opcional: legendas automáticas palavra a palavra
+pip install openai-whisper
+```
+
+Não há dependências npm. Os scripts usam apenas Node 18+ e ffmpeg.
+
+## Uso
+
+1. Coloque 1–3 reels **finalizados** pelo seu editor em `input/reference/`.
+2. Coloque os clipes **brutos** em `input/raw/` (e, se quiser, uma trilha em `input/music/`).
+3. Abra a pasta no Claude Code (terminal: `claude`, ou uma sessão Code no app desktop) e mande:
+
+> Estude os reels em input/reference para aprender o estilo do meu editor e depois edite os
+> clipes de input/raw em um reel de ~30 s nesse estilo. Gere o preview, revise e me mostre.
+
+O Claude segue a skill `.claude/skills/video-editor`:
+
+| Etapa | Comando | O que gera |
+|---|---|---|
+| Checar ambiente | `npm run check` | – |
+| Estudar referências | `npm run analyze` | `work/style-profile.json`, miniaturas, `STYLE.md` |
+| Indexar brutos | `npm run probe` | `work/raw-index.json` (fala, silêncios, transcrição) |
+| Montar edição | (Claude escreve) | `edit.json` |
+| Preview | `npm run preview` | `output/reel.preview.mp4` (540x960) |
+| Render final | `npm run render` | `output/reel.mp4` (1080x1920, -14 LUFS) |
+
+## O que o motor de render faz
+- Corte preciso por segmento, com reenquadramento 9:16 (`crop`) ou fundo desfocado (`blur`)
+- Zoom fixo ou animado (punch-in) e foco horizontal/vertical
+- Velocidade, volume, mute, fade in/out
+- Legendas estilo reel geradas da transcrição, com a palavra atual destacada e animação "pop"
+- Música em loop com ducking automático sob a voz e normalização de loudness
+- Grade de miniaturas do resultado para o Claude revisar visualmente
+
+Os vídeos em `input/`, `work/` e `output/` ficam fora do git.
