@@ -1,26 +1,35 @@
 {
   "output": "reel.mp4",
+  "outputDir": "output",
   "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "loudnessLUFS": -14,
   "segments": [
-    { "src": "input/raw/clip01.mp4", "in": 0.35, "out": 3.10, "zoom": 1.0, "zoomTo": 1.12 },
-    { "src": "input/raw/clip01.mp4", "in": 3.55, "out": 6.20, "zoom": 1.2, "focusX": 0.45 },
-    { "src": "input/raw/broll_tela.mp4", "in": 2.0, "out": 3.4, "fit": "blur", "mute": true },
-    { "src": "input/raw/clip02.mp4", "in": 0.80, "out": 4.90, "speed": 1.1, "fadeOut": 0.3 }
+    { "src": "input/raw/hook.mov", "in": 0.35, "out": 2.6, "zoom": 1.0, "zoomTo": 1.12, "focusY": 0.4 },
+    { "src": "input/raw/screen.mp4", "in": 12.0, "out": 15.2, "fit": "crop", "audioSrc": "input/raw/voiceover.m4a", "audioIn": 0.2,
+      "transition": { "type": "slideleft", "duration": 0.2 } },
+    { "type": "card", "text": "GLM 5.3 Flash", "subtext": "modelo gratuito", "duration": 2.1,
+      "audioSrc": "input/raw/voiceover.m4a", "audioIn": 3.4 },
+    { "src": "input/raw/screen.mp4", "in": 40.0, "out": 43.5, "zoom": 1.3, "focusX": 0.2, "audioSrc": "input/raw/voiceover.m4a", "audioIn": 5.5 },
+    { "src": "input/raw/cta.mov", "in": 0.2, "out": 3.0, "zoom": 1.15, "captions": false,
+      "transition": { "type": "fade", "duration": 0.2 } }
   ],
   "captions": {
     "maxWords": 3,
+    "fix": { "opencode": "OpenCode", "cloud": "Claude" },
     "style": {
-      "font": "Montserrat",
-      "size": 82,
-      "color": "#FFFFFF",
-      "highlight": "#FFE600",
-      "outline": "#000000",
-      "outlineWidth": 6,
-      "uppercase": true,
-      "marginV": 640,
-      "pop": true
+      "font": "Montserrat", "size": 82, "color": "#FFFFFF", "highlight": "#FFE600",
+      "outline": "#000000", "outlineWidth": 6, "uppercase": true, "marginV": 640, "pop": true
     }
   },
-  "music": { "src": "input/music/trilha.mp3", "volume": 0.12, "duck": true },
-  "loudnessLUFS": -14
+  "textStyle": { "size": 150, "color": "#FFFFFF", "outline": "#000000", "outlineWidth": 8 },
+  "texts": [
+    { "start": 0.0, "end": 1.8, "text": "$0", "size": 220, "color": "#FFE600", "y": 0.3 },
+    { "start": 11.9, "end": 14.5, "text": "EDITOR", "size": 180, "color": "#FFE600", "y": 0.42 }
+  ],
+  "sfx": [
+    { "src": "builtin:pop", "at": 0.0, "volume": 0.5 },
+    { "src": "builtin:whoosh", "at": 2.05, "volume": 0.4 },
+    { "src": "builtin:ding", "at": 11.9, "volume": 0.4 }
+  ],
+  "music": { "src": "input/music/trilha.mp3", "volume": 0.12, "duck": true }
 }
